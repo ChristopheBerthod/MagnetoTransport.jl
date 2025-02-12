@@ -6,3 +6,8 @@
 [![](https://img.shields.io/badge/docs-dev-blue.svg)](https://ChristopheBerthod.github.io/MagnetoTransport.jl/dev)
 
 Solution of the electronic linear magneto-transport problem in two dimensions with a local energy-dependent self-energy, implemented in [Julia](https://julialang.org/). See the [Documentation](https://ChristopheBerthod.github.io/MagnetoTransport.jl/dev).
+
+
+# Reference
+
+Giacomo Morpurgo, Louk Rademaker, Christophe Berthod, and Thierry Giamarchi, [Physical Review Research **6**, 013112 (2024)](https://doi.org/10.1103/PhysRevResearch.6.013112)
