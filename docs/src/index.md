@@ -99,7 +99,7 @@ Hence, thanks to the use of Hilbert and Lorentz transforms, the numerical work a
 
 The following example uses piecewise linear toy models for the functions ``N_0(E)``, ``\Phi_0^{x,y}(E)``, and ``\Phi_1(E)``, that are not deduced from an underlying dispersion relation ``E_{\mathbf{k}}``:
 ```@example
-using Piecewise # hide
+using Piecewise
 N₀ = PiecewiseFunction(:even, Piece((0, 1), POLY, [1]))
 Φ₀ = PiecewiseFunction(:even, Piece((0, 1), POLY, [1, -1]))
 Φ₁ = 2 * π^2 / 3 * PiecewiseFunction(:odd,
@@ -130,10 +130,11 @@ A causal self-energy may be deduced from a scattering rate ``\Gamma(E)`` accordi
 ```
 This expression obeys Kramers-Kronig relations by construction. ``\Gamma(E)`` must be positive, such that ``\mathrm{Im}\,\Sigma(\varepsilon)=-\pi\Gamma(\varepsilon)`` is negative. A toy model is used here for ``\Gamma(E)``, which is an even function of ``E`` vanishing as a square root at ``|E|=1.5``. The following code defines ``\Sigma(\varepsilon)`` and draws it on a graph `p2`:
 ```@example
-using Piecewise, PiecewiseHilbert # hide
+using Piecewise # hide
 using Plots, LaTeXStrings, Measures # hide
 default(linewidth=3, legendfontsize=12) # hide
 E = -2:0.001:2 # hide
+using PiecewiseHilbert
 HoΓ = HilbertTransform(PiecewiseFunction(:even,
     Piece((0, 1.5), (true, false), PLS, [1.5, 0.5, 0.001])))
 Σ(ε) = HoΓ(ε + im * eps(Float64))
@@ -179,7 +180,7 @@ savefig("model.svg"); nothing # hide
 The following code defines the [`LorentzTransform`](@extref Piecewise PiecewiseLorentz.LorentzTransform) objects and then computes ``\mu``, ``\sigma_{xx}``, and ``\sigma_{xy}/B`` at ``T=0`` versus ``n\in[10^{-3},10^{-1}]``. These data are put on the graphs `p1` and `p2`.
 
 ```@example
-using Piecewise, PiecewiseHilbert, PiecewiseLorentz # hide
+using Piecewise, PiecewiseHilbert # hide
 using MagnetoTransport # hide
 using Plots, LaTeXStrings, Measures # hide
 default(linewidth=3, legendfontsize=12) # hide
@@ -191,6 +192,7 @@ HoΓ = HilbertTransform(PiecewiseFunction(:even, # hide
     Piece((0, 1.5), (true, false), PLS, [1.5, 0.5, 0.001]))) # hide
 Σ(ε) = HoΓ(ε + im * eps(Float64)) # hide
 HoN₀ = HilbertTransform(N₀) # hide
+using PiecewiseLorentz
 L²oΦ₀ = LorentzTransform(Φ₀, 2)
 L³oΦ₁ = LorentzTransform(Φ₁, 3)
 
