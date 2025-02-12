@@ -9,7 +9,7 @@ Solution of the electronic linear magneto-transport problem in two dimensions wi
 
 ## Dependencies
 
-This package requires [QuadGK.jl](https://github.com/JuliaMath/QuadGK.jl) and the [Piecewise](https://github.com/ChristopheBerthod/Piecewise.jl) suite, which in turn makes use of special functions provided by [HypergeometricFunctions.jl](https://github.com/JuliaMath/HypergeometricFunctions.jl), and [PolyLog.jl](https://github.com/Expander/PolyLog.jl), as well as [LsqFit.jl](https://github.com/JuliaNLSolvers/LsqFit.jl).
+This package requires [QuadGK.jl](https://github.com/JuliaMath/QuadGK.jl) and the [Piecewise](https://github.com/ChristopheBerthod/Piecewise.jl) suite, which in turn makes use of special functions provided by [HypergeometricFunctions.jl](https://github.com/JuliaMath/HypergeometricFunctions.jl), and [PolyLog.jl](https://github.com/Expander/PolyLog.jl), as well as curve fitting provided by [LsqFit.jl](https://github.com/JuliaNLSolvers/LsqFit.jl).
 
 ## Reference
 
