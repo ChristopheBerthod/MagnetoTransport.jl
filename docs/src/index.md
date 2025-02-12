@@ -99,7 +99,7 @@ Hence, thanks to the use of Hilbert and Lorentz transforms, the numerical work a
 
 The following example uses piecewise linear toy models for the functions ``N_0(E)``, ``\Phi_0^{x,y}(E)``, and ``\Phi_1(E)``, that are not deduced from an underlying dispersion relation ``E_{\mathbf{k}}``:
 ```@example
-using ..Piecewise # hide
+using Piecewise # hide
 N₀ = PiecewiseFunction(:even, Piece((0, 1), POLY, [1]))
 Φ₀ = PiecewiseFunction(:even, Piece((0, 1), POLY, [1, -1]))
 Φ₁ = 2 * π^2 / 3 * PiecewiseFunction(:odd,
@@ -108,7 +108,7 @@ nothing # hide
 ```
 ``N_0(E)`` has the shape of a rectangle: it equals one if ``-1<E<1`` and zero otherwise. ``\Phi_0^x(E)=\Phi_0^y(E)`` is an even function of ``E`` with the shape of a triangle, ``\Phi_1(E)`` is an odd function of ``E`` made of two triangles, and both of them vanish if ``|E|>1``. The following code draws these functions on a graph `p1`:
 ```@example
-using ..Piecewise # hide
+using Piecewise # hide
 using Plots, LaTeXStrings, Measures
 default(linewidth=3, legendfontsize=12) # hide
 N₀ = PiecewiseFunction(:even, Piece((0, 1), POLY, [1])) # hide
@@ -130,7 +130,7 @@ A causal self-energy may be deduced from a scattering rate ``\Gamma(E)`` accordi
 ```
 This expression obeys Kramers-Kronig relations by construction. ``\Gamma(E)`` must be positive, such that ``\mathrm{Im}\,\Sigma(\varepsilon)=-\pi\Gamma(\varepsilon)`` is negative. A toy model is used here for ``\Gamma(E)``, which is an even function of ``E`` vanishing as a square root at ``|E|=1.5``. The following code defines ``\Sigma(\varepsilon)`` and draws it on a graph `p2`:
 ```@example
-using ..Piecewise, ..PiecewiseHilbert # hide
+using Piecewise, PiecewiseHilbert # hide
 using Plots, LaTeXStrings, Measures # hide
 default(linewidth=3, legendfontsize=12) # hide
 E = -2:0.001:2 # hide
@@ -145,7 +145,7 @@ nothing # hide
 ```
 At this point, the interacting density of states ``N(\varepsilon)`` can be deduced according to equation ``(5')``. The following code defines ``N(\varepsilon)``, draws it on a graph `p3`, and displays the three graphs:
 ```@example
-using ..Piecewise, ..PiecewiseHilbert # hide
+using Piecewise, PiecewiseHilbert # hide
 using Plots, LaTeXStrings, Measures # hide
 default(linewidth=3, legendfontsize=12) # hide
 N₀ = PiecewiseFunction(:even, Piece((0, 1), POLY, [1])) # hide
@@ -179,8 +179,8 @@ savefig("model.svg"); nothing # hide
 The following code defines the [`LorentzTransform`](@extref Piecewise PiecewiseLorentz.LorentzTransform) objects and then computes ``\mu``, ``\sigma_{xx}``, and ``\sigma_{xy}/B`` at ``T=0`` versus ``n\in[10^{-3},10^{-1}]``. These data are put on the graphs `p1` and `p2`.
 
 ```@example
-using ..Piecewise, ..PiecewiseHilbert, ..PiecewiseLorentz # hide
-using ..MagnetoTransport # hide
+using Piecewise, PiecewiseHilbert, PiecewiseLorentz # hide
+using MagnetoTransport # hide
 using Plots, LaTeXStrings, Measures # hide
 default(linewidth=3, legendfontsize=12) # hide
 N₀ = PiecewiseFunction(:even, Piece((0, 1), POLY, [1])) # hide
@@ -208,8 +208,8 @@ nothing # hide
 Now the values of ``\sigma_{xx}`` and ``\sigma_{xy}/B`` can be used to deduce the Hall constant ``R_{\mathrm{H}}=\sigma_{xy}/B/\sigma_{xx}^2``. Because the scattering is weak, ``R_{\mathrm{H}}`` approaches ``-1/(|e|n)`` at large ``n``, but deviates at low ``n``, where it varies nonmonotonously with increasing temperature.
 ```@example
 ENV["GKSwstype"] = "100" # hide
-using ..Piecewise, ..PiecewiseHilbert, ..PiecewiseLorentz # hide
-using ..MagnetoTransport # hide
+using Piecewise, PiecewiseHilbert, PiecewiseLorentz # hide
+using MagnetoTransport # hide
 using Plots, LaTeXStrings, Measures # hide
 default(linewidth=3, legendfontsize=12) # hide
 N₀ = PiecewiseFunction(:even, Piece((0, 1), POLY, [1])) # hide

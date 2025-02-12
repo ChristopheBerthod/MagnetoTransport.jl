@@ -1,11 +1,4 @@
 using Documenter, DocumenterInterLinks
-
-using Pkg
-Pkg.add(url="https://github.com/ChristopheBerthod/Piecewise.jl", subdir="Piecewise")
-Pkg.add(url="https://github.com/ChristopheBerthod/Piecewise.jl", subdir="PiecewiseHilbert")
-Pkg.add(url="https://github.com/ChristopheBerthod/Piecewise.jl", subdir="PiecewiseLorentz")
-using Piecewise, PiecewiseHilbert, PiecewiseLorentz
-
 using MagnetoTransport
 
 links = InterLinks(
