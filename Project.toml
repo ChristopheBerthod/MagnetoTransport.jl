@@ -1,0 +1,22 @@
+name = "MagnetoTransport"
+uuid = "69a1719d-56a7-4bd5-a19b-0cc479363a4d"
+authors = ["Christophe Berthod <christophe.berthod@unige.ch>"]
+version = "0.1.0"
+
+[deps]
+Piecewise = "f03ddd90-437e-4cf2-8f6c-e62f92609b90"
+PiecewiseHilbert = "fb75a84c-a7ae-4011-94d8-abc4bb6dbff9"
+PiecewiseLorentz = "5265c256-a0b7-4541-80b8-9bb011dcc609"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+QuadGK = "1fd47b50-473d-5c70-9696-f719f8f3bcdc"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[sources]
+Piecewise = {path = "../Piecewise/Piecewise/"}
+PiecewiseHilbert = {path = "../Piecewise/PiecewiseHilbert/"}
+PiecewiseLorentz = {path = "../Piecewise/PiecewiseLorentz/"}
+
+[compat]
+Printf = "1.11.0"
+QuadGK = "2.11.2"
+Test = "1.11.0"
