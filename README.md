@@ -21,7 +21,7 @@ Pkg.add(url="https://github.com/ChristopheBerthod/MagnetoTransport.jl")
 
 ### Example
 
-See the [example](https://ChristopheBerthod.github.io/MagnetoTransport.jl/dev/index.htm#Example) in the documentation.
+See the [example](https://christopheberthod.github.io/MagnetoTransport.jl/dev/#Example) in the documentation.
 
 ### Reference
 
