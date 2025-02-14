@@ -1,8 +1,15 @@
-# MagnetoTransport
+# MagnetoTransport.jl
 
-The [Julia](https://julialang.org) module [MagnetoTransport](@ref) addresses a problem in physics: computing the linear conductivity tensor of a two-dimensional gas of electrons in a perpendicular magnetic field, the electron scattering being described by an energy-dependent, yet momentum-independent self-energy.
+The [Julia](https://julialang.org) module [MagnetoTransport](@ref MagnetoTransport.jl) addresses a problem in physics: computing the linear conductivity tensor of a two-dimensional gas of electrons in a perpendicular magnetic field, the electron scattering being described by an energy-dependent, yet momentum-independent self-energy.
 
-##### Definition of the problem
+### Installation
+
+```julia
+using Pkg
+Pkg.add(url="https://github.com/ChristopheBerthod/MagnetoTransport.jl")
+```
+
+### Definition of the problem
 
 This problem takes as inputs a dispersion relation ``E_{\mathbf{k}}`` for the noninteracting electrons, a complex self-energy function ``\Sigma(\varepsilon)`` describing the scattering at energy ``\varepsilon``, a density ``n`` of electrons per surface unit, and a temperature ``T``. The outputs are a chemical potential ``\mu``, normal conductivities ``\sigma_{xx}`` and  ``\sigma_{yy}``, and a Hall conductivity ``\sigma_{xy}``. This problem is defined by the following set of coupled equations:
 ```math
@@ -37,7 +44,7 @@ This problem takes as inputs a dispersion relation ``E_{\mathbf{k}}`` for the no
 ```
 In these equations, ``e`` is the [elementary charge](https://en.wikipedia.org/wiki/Elementary_charge), ``\hbar`` is the [reduced Planck constant](https://en.wikipedia.org/wiki/Planck_constant), ``k_{\mathrm{B}}`` is the [Boltzmann constant](https://en.wikipedia.org/wiki/Boltzmann_constant), ``\delta(\cdot)`` is the [Dirac delta function](https://en.wikipedia.org/wiki/Dirac_delta_function), and ``B`` is the magnetic field. Note that these equations require the dispersion relation ``E_{\mathbf{k}}`` to be twice differentiable and the function ``\Sigma(\varepsilon)`` to be *causal*, i.e., its real and imaginary parts must obey [Kramers-Kronig relations](https://en.wikipedia.org/wiki/Kramers%E2%80%93Kronig_relations).
 
-##### Formulation in terms of integral transforms
+### Formulation in terms of integral transforms
 
 The problem can be reformulated as
 ```math

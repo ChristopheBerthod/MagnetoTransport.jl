@@ -7,7 +7,7 @@ links = InterLinks(
 
 makedocs(
     repo = Documenter.Remotes.GitHub("ChristopheBerthod", "MagnetoTransport.jl"),
-    sitename = "MagnetoTransport",
+    sitename = "MagnetoTransport.jl",
     format = Documenter.HTML(prettyurls = false,
         edit_link = "main",
         inventory_version = "v0.1.0"
