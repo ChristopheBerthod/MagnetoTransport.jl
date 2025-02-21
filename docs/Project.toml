@@ -15,7 +15,7 @@ MagnetoTransport = {path = "../"}
 [compat]
 Documenter = "1.8"
 DocumenterInterLinks = "1"
-LaTeXStrings = "4"
+LaTeXStrings = "1.4.0"
 Measures = "0.3.2"
 Piecewise = "0.1.0"
 PiecewiseHilbert = "0.1.0"
