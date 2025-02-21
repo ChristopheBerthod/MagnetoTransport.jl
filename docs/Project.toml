@@ -11,9 +11,13 @@ Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 
 [sources]
 MagnetoTransport = {path = "../"}
-Piecewise = {subdir = "Piecewise", url = "https://github.com/ChristopheBerthod/Piecewise.jl"}
-PiecewiseHilbert = {subdir = "PiecewiseHilbert", url = "https://github.com/ChristopheBerthod/Piecewise.jl"}
-PiecewiseLorentz = {subdir = "PiecewiseLorentz", url = "https://github.com/ChristopheBerthod/Piecewise.jl"}
 
 [compat]
 Documenter = "1.8"
+DocumenterInterLinks = "1"
+LaTeXStrings = "4"
+Measures = "0.3.2"
+Piecewise = "0.1.0"
+PiecewiseHilbert = "0.1.0"
+PiecewiseLorentz = "0.1.0"
+Plots = "1.40.9"

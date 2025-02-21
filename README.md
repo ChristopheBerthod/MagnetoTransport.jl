@@ -8,7 +8,7 @@ Solution of the electronic linear magneto-transport quantum problem in two dimen
 
 ### Dependencies
 
-- [Piecewise](https://github.com/ChristopheBerthod/Piecewise.jl), [PiecewiseHilbert](https://github.com/ChristopheBerthod/Piecewise.jl), [PiecewiseLorentz](https://github.com/ChristopheBerthod/Piecewise.jl)
+- [Piecewise](https://github.com/ChristopheBerthod/Piecewise.jl)&nbsp;&nbsp;|&nbsp;&nbsp;[PiecewiseHilbert](https://github.com/ChristopheBerthod/Piecewise.jl)&nbsp;&nbsp;|&nbsp;&nbsp;[PiecewiseLorentz](https://github.com/ChristopheBerthod/Piecewise.jl)
 
 - [QuadGK](https://github.com/JuliaMath/QuadGK.jl)
 

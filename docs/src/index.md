@@ -1,13 +1,18 @@
 # MagnetoTransport.jl
 
-The [Julia](https://julialang.org) module [MagnetoTransport](@ref MagnetoTransport.jl) addresses a problem in physics: computing the linear conductivity tensor of a two-dimensional gas of electrons in a perpendicular magnetic field, the electron scattering being described by an energy-dependent, yet momentum-independent self-energy.
+## Installation
 
-### Installation
-
+The package can be installed with `Pkg.add`.
 ```julia
 using Pkg
 Pkg.add(url="https://github.com/ChristopheBerthod/MagnetoTransport.jl")
 ```
+
+
+
+## Introduction
+
+The [Julia](https://julialang.org) module [MagnetoTransport](https://github.com/ChristopheBerthod/MagnetoTransport.jl) addresses a problem in quantum physics: computing the linear conductivity tensor of a two-dimensional gas of electrons in a perpendicular magnetic field, where the electron scattering is described by an energy-dependent, yet momentum-independent self-energy.
 
 ### Definition of the problem
 
@@ -46,7 +51,7 @@ In these equations, ``e`` is the [elementary charge](https://en.wikipedia.org/wi
 
 ### Formulation in terms of integral transforms
 
-The problem can be reformulated as
+Using integral transforms, the problem can be reformulated with only four equations as
 ```math
 \begin{align*}
 (5')&&&&N(\varepsilon)&=-\frac{1}{\pi}\,\mathrm{Im}\,(H\circ N_0)
@@ -85,7 +90,7 @@ In this formulation, the problem takes the four functions ``(H\circ N_0)``, ``(L
 
 ## Implementation
 
-The [Julia](https://julialang.org) modules [Piecewise](@extref Piecewise), [PiecewiseHilbert](@extref Piecewise), and [PiecewiseLorentz](@extref Piecewise) provide tools for representing the functions ``N_0(E)``, ``\Phi_0^{x,y}(E)``, and ``\Phi_1(E)`` as [`PiecewiseFunction`](@extref) objects and for constructing [`HilbertTransform`](@extref Piecewise PiecewiseHilbert.HilbertTransform) and [`LorentzTransform`](@extref Piecewise PiecewiseLorentz.LorentzTransform) objects holding their Hilbert and Lorentz transforms.
+The [Julia](https://julialang.org) modules [Piecewise](https://github.com/ChristopheBerthod/Piecewise.jl), [PiecewiseHilbert](https://github.com/ChristopheBerthod/Piecewise.jl), and [PiecewiseLorentz](https://github.com/ChristopheBerthod/Piecewise.jl) provide tools for representing the functions ``N_0(E)``, ``\Phi_0^{x,y}(E)``, and ``\Phi_1(E)`` as [`PiecewiseFunction`](@extref) objects and for constructing [`HilbertTransform`](@extref Piecewise PiecewiseHilbert.HilbertTransform) and [`LorentzTransform`](@extref Piecewise PiecewiseLorentz.LorentzTransform) objects holding their Hilbert and Lorentz transforms.
 
 Inverting equation ``(6')`` to determine ``\mu`` is the most time-consuming part of the calculation. The first term in the right-hand side of equation ``(6')`` is the value of ``n`` at temperature ``T=0``, while the second term is a correction only needed if ``T>0``. The method [`number`](@ref) returns ``n`` for a given ``\mu`` and the method [`chemical_potential`](@ref) returns ``\mu`` for a given ``n``. If an estimate of ``μ`` is available, it can be supplied using the optional keyword argument `μ0`. The method [`σ₀`](@ref) returns ``\sigma_{xx}`` or ``\sigma_{yy}`` divided by ``e^2/h``, depending on which Lorentz transform is passed as the argument `L2oPhi0`. The method [`σ₁`](@ref) returns ``\sigma_{xy}/B`` divided by ``|e|^3/h^2``. The method [`RH`](@ref) returns the Hall constant ``R_{\mathrm{H}}=\frac{\sigma_{xy}/B}{\sigma_{xx}\sigma_{yy}}`` divided by ``1/|e|``. The methods [`σ₀`](@ref), [`σ₁`](@ref), and [`RH`](@ref) take either the density ``n`` as the first argument, in which case they use [`chemical_potential`](@ref) to determine ``\mu``, or take the chemical potential ``\mu`` as the first argument.
 
@@ -104,7 +109,7 @@ Hence, thanks to the use of Hilbert and Lorentz transforms, the numerical work a
 
 ## Example
 
-The following example uses piecewise linear toy models for the functions ``N_0(E)``, ``\Phi_0^{x,y}(E)``, and ``\Phi_1(E)``, that are not deduced from an underlying dispersion relation ``E_{\mathbf{k}}``:
+The following example uses piecewise-linear toy models for the functions ``N_0(E)``, ``\Phi_0^{x,y}(E)``, and ``\Phi_1(E)``, that are not deduced from an underlying dispersion relation ``E_{\mathbf{k}}``:
 ```@example
 using Piecewise
 N₀ = PiecewiseFunction(:even, Piece((0, 1), POLY, [1]))
@@ -188,7 +193,6 @@ The following code defines the [`LorentzTransform`](@extref Piecewise PiecewiseL
 
 ```@example
 using Piecewise, PiecewiseHilbert # hide
-using MagnetoTransport # hide
 using Plots, LaTeXStrings, Measures # hide
 default(linewidth=3, legendfontsize=12) # hide
 N₀ = PiecewiseFunction(:even, Piece((0, 1), POLY, [1])) # hide
@@ -203,6 +207,7 @@ using PiecewiseLorentz
 L²oΦ₀ = LorentzTransform(Φ₀, 2)
 L³oΦ₁ = LorentzTransform(Φ₁, 3)
 
+using MagnetoTransport
 n = 10 .^ (-3:0.02:-1)
 μ = chemical_potential.(n, 0, HoN₀, Σ)
 σxx = σ₀.(μ, 0, L²oΦ₀, Σ)
@@ -238,7 +243,7 @@ n = 10 .^ (-3:0.02:-1) # hide
 p1 = plot(n, μ, label=L"\mu(T=0)", xlabel=L"n", xscale=:log10) # hide
 p2 = plot(xlabel=L"n", xscale=:log10, yscale=:log10, legend=:bottomright) # hide
 plot!(p2, n,  σxx, label=L"\sigma_{xx}(T=0)") # hide
-plot!(p2, n, -σxy, label=L"-\sigma_{xy}(T=0)") # hide
+plot!(p2, n, -σxy, label=L"-\sigma_{xy}(T=0)/B") # hide
 p3 = plot(xlabel=L"n", xscale=:log10, yscale=:log10)
 plot!(p3, [3e-3, 1e-1], 1 ./ [3e-3, 1e-1], lw=1, label=L"1/n")
 plot!(p3, n, .- σxy ./ σxx .^2, label=L"-R_\mathrm{H}(T=0)")

@@ -9,14 +9,16 @@ PiecewiseHilbert = "fb75a84c-a7ae-4011-94d8-abc4bb6dbff9"
 PiecewiseLorentz = "5265c256-a0b7-4541-80b8-9bb011dcc609"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 QuadGK = "1fd47b50-473d-5c70-9696-f719f8f3bcdc"
-Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
-
-[sources]
-Piecewise = {url="https://github.com/ChristopheBerthod/Piecewise.jl", subdir="Piecewise"}
-PiecewiseHilbert = {url="https://github.com/ChristopheBerthod/Piecewise.jl", subdir="PiecewiseHilbert"}
-PiecewiseLorentz = {url="https://github.com/ChristopheBerthod/Piecewise.jl", subdir="PiecewiseLorentz"}
 
 [compat]
+Piecewise = "0.1.0"
+PiecewiseHilbert = "0.1.0"
+PiecewiseLorentz = "0.1.0"
 Printf = "1.11.0"
 QuadGK = "2.11.2"
-Test = "1.11.0"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
