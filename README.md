@@ -25,6 +25,6 @@ See the [example](https://christopheberthod.github.io/MagnetoTransport.jl/dev/#E
 
 ### References
 
-G. Morpurgo, L. Rademaker, C. Berthod, and T. Giamarchi, [Physical Review Research **6**, 013112 (2024)](https://doi.org/10.1103/PhysRevResearch.6.013112).
+- G. Morpurgo, L. Rademaker, C. Berthod, and T. Giamarchi, [Physical Review Research **6**, 013112 (2024)](https://doi.org/10.1103/PhysRevResearch.6.013112).
 
-G. Morpurgo, C. Berthod, and T. Giamarchi, [Physical Review Research **7**, 033038 (2025)](https://doi.org/10.1103/nzrk-yfqk).
+- G. Morpurgo, C. Berthod, and T. Giamarchi, [Physical Review Research **7**, 033038 (2025)](https://doi.org/10.1103/nzrk-yfqk).
