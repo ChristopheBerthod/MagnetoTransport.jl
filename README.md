@@ -23,6 +23,8 @@ Pkg.add(url="https://github.com/ChristopheBerthod/MagnetoTransport.jl")
 
 See the [example](https://christopheberthod.github.io/MagnetoTransport.jl/dev/#Example) in the documentation.
 
-### Reference
+### References
 
 G. Morpurgo, L. Rademaker, C. Berthod, and T. Giamarchi, [Physical Review Research **6**, 013112 (2024)](https://doi.org/10.1103/PhysRevResearch.6.013112).
+
+G. Morpurgo, C. Berthod, and T. Giamarchi, [Physical Review Research **7**, 033038 (2025)](https://doi.org/10.1103/nzrk-yfqk).
